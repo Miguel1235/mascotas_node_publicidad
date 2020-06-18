@@ -23,17 +23,11 @@ export function initModule(app: express.Express) {
 }
 
 /**
- * @api {get} /v1/ads Buscar publicidades
+ * @api {get} /v1/ads Listar publicidades
  * @apiName Buscar publicidades
  * @apiGroup Publicidad
  *
- * @apiDescription Busca todas las publicidades que esten habilitadas
- *
- * @apiExample {json} Body
- *    {
- *      "image": "Id de imagen",
- *      "url": "url de la imagen"
- *    }
+ * @apiDescription Listar todas las publicidades habilitadas
  *
  * @apiSuccessExample {json} Body
  *    [

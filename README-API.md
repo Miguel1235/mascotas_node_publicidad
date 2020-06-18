@@ -26,7 +26,7 @@ Microservicio de Autentificación
 	- [Listar Provincias](#listar-provincias)
 	
 - [Publicidad](#publicidad)
-	- [Buscar publicidades](#buscar-publicidades)
+	- [Listar publicidades](#listar-publicidades)
 	- [Buscar una publicidad](#buscar-una-publicidad)
 	- [Crear una publicidad](#crear-una-publicidad)
 	- [Eliminar publicidad](#eliminar-publicidad)
@@ -888,10 +888,10 @@ HTTP/1.1 500 Internal Server Error
 ```
 # <a name='publicidad'></a> Publicidad
 
-## <a name='buscar-publicidades'></a> Buscar publicidades
+## <a name='listar-publicidades'></a> Listar publicidades
 [Back to top](#top)
 
-<p>Busca todas las publicidades que esten habilitadas</p>
+<p>Listar todas las publicidades habilitadas</p>
 
 	GET /v1/ads
 
@@ -899,14 +899,6 @@ HTTP/1.1 500 Internal Server Error
 
 ### Examples
 
-Body
-
-```
-{
-  "image": "Id de imagen",
-  "url": "url de la imagen"
-}
-```
 Header Autorización
 
 ```
@@ -1024,7 +1016,7 @@ HTTP/1.1 500 Internal Server Error
 ## <a name='crear-una-publicidad'></a> Crear una publicidad
 [Back to top](#top)
 
-<p>Registra una publicidad en el sistema</p>
+<p>Registra una publicidad en el sistema, necesita permisos de admin</p>
 
 	POST /v1/ads
 
@@ -1081,7 +1073,7 @@ HTTP/1.1 500 Internal Server Error
 ## <a name='eliminar-publicidad'></a> Eliminar publicidad
 [Back to top](#top)
 
-<p>Elimina una publicidad para que no se muestre mas en el frontEnd.</p>
+<p>Elimina una publicidad para que no se muestre mas en el frontEnd, necesita permisos de administrador</p>
 
 	DELETE /v1/ads/:adId
 
