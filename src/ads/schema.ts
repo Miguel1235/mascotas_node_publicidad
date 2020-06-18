@@ -2,7 +2,7 @@
 
 import * as mongoose from "mongoose";
 
-export interface IAd extends mongoose.Document{
+export interface IAd extends mongoose.Document {
   image: string;
   url: string;
   created: Number;
@@ -12,7 +12,7 @@ export interface IAd extends mongoose.Document{
 /**
  * Esquema del Perfil
  */
-export const AdSchema=new mongoose.Schema({
+export const AdSchema = new mongoose.Schema({
   image: {
     type: String,
     ref: "Image"
@@ -33,10 +33,10 @@ export const AdSchema=new mongoose.Schema({
     type: Boolean,
     default: true
   }
-},{collection: "ads"});
+}, { collection: "ads" });
 
-AdSchema.pre("save",function (this: IAd, next) {
-  this.updated=Date.now();
+AdSchema.pre("save", function (this: IAd, next) {
+  this.updated = Date.now();
   next();
 });
 

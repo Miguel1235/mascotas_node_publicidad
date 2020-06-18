@@ -1,7 +1,6 @@
 "use strict";
 
 import * as express from "express";
-import * as error from "../server/error";
 import { onlyLoggedIn } from "../token/passport";
 import * as user from "../user/service";
 import * as imageService from "../image/service";
@@ -14,12 +13,12 @@ export function initModule(app: express.Express) {
   app
     .route("/v1/ads")
     .get(getAds)
-    .post(onlyLoggedIn,createAd);
+    .post(onlyLoggedIn, createAd);
 
   app
     .route("/v1/ads/:adId")
     .get(getAd)
-    .delete(onlyLoggedIn,removeAd);
+    .delete(onlyLoggedIn, removeAd);
 }
 
 /**
@@ -44,11 +43,11 @@ export function initModule(app: express.Express) {
  * @apiUse ParamValidationErrors
  * @apiUse OtherErrors
  */
-const getAds = async (req: express.Request,res: express.Response) =>{
-  const result=await adService.listAds();
+const getAds = async (req: express.Request, res: express.Response) => {
+  const result = await adService.listAds();
   res.json(result.map(u => {
     return {
-      id:u._id,
+      id: u._id,
       image: u.image,
       url: u.url
     };
@@ -86,10 +85,10 @@ const getAds = async (req: express.Request,res: express.Response) =>{
  * @apiUse ParamValidationErrors
  * @apiUse OtherErrors
  */
-const createAd=async (req: user.ISessionRequest,res: express.Response)=>{
-  await user.hasPermission(req.user.user_id,"admin");
-  const imageResult=await imageService.create(req.body);
-  const adResult=await adService.createAd(imageResult.id,req.body.url);
+const createAd = async (req: user.ISessionRequest, res: express.Response) => {
+  await user.hasPermission(req.user.user_id, "admin");
+  const imageResult = await imageService.create(req.body);
+  const adResult = await adService.createAd(imageResult.id, req.body.url);
   res.json({
     adResult
   });
@@ -112,12 +111,12 @@ const createAd=async (req: user.ISessionRequest,res: express.Response)=>{
  * @apiUse ParamValidationErrors
  * @apiUse OtherErrors
  */
-const getAd=async (req: express.Request,res: express.Response)=>{
-  const result= await adService.getAd(req.params.adId);
+const getAd = async (req: express.Request, res: express.Response) => {
+  const result = await adService.getAd(req.params.adId);
   return res.json({
-    url:result.url,
-    image:result.image,
-    id:result.id
+    url: result.url,
+    image: result.image,
+    id: result.id
   });
 };
 /**
@@ -132,8 +131,8 @@ const getAd=async (req: express.Request,res: express.Response)=>{
  * @apiUse ParamValidationErrors
  * @apiUse OtherErrors
  */
-const removeAd=async (req: user.ISessionRequest,res: express.Response)=>{
-  await user.hasPermission(req.user.user_id,"admin");
+const removeAd = async (req: user.ISessionRequest, res: express.Response) => {
+  await user.hasPermission(req.user.user_id, "admin");
   await adService.invalidate(req.params.adId);
   res.send();
 };

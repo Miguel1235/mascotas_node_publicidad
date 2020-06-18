@@ -6,8 +6,6 @@ import * as env from "../server/environment";
 import * as error from "../server/error";
 import { IUser, User } from "./user";
 
-const conf = env.getConfig(process.env);
-
 export interface ISessionRequest extends express.Request {
     user: Payload;
 }
