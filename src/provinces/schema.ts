@@ -8,7 +8,7 @@ export interface IProvince extends mongoose.Document {
   enabled: Boolean;
 }
 
-export let ProvinceSchema = new mongoose.Schema({
+export const ProvinceSchema = new mongoose.Schema({
   name: {
     type: String,
     default: "",
@@ -21,4 +21,4 @@ export let ProvinceSchema = new mongoose.Schema({
   }
 }, { collection: "provinces" });
 
-export let Province = mongoose.model<IProvince>("Province", ProvinceSchema);
+export const Province = mongoose.model<IProvince>("Province", ProvinceSchema);

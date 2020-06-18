@@ -15,6 +15,7 @@ redisClient.on("connect", function () {
 
 interface ImageRequest {
   image: string;
+  url?: string;
 }
 
 export async function findByID(id: string): Promise<IImage> {
@@ -33,6 +34,7 @@ export async function findByID(id: string): Promise<IImage> {
 }
 
 async function validateCreate(body: ImageRequest): Promise<ImageRequest> {
+  console.log("valido el body",body);
   const result: error.ValidationErrorMessage = {
     messages: []
   };

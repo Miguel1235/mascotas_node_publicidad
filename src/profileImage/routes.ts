@@ -42,9 +42,7 @@ export function initModule(app: express.Express) {
 async function updateProfilePicture(req: ISessionRequest, res: express.Response) {
   const imageResult = await imageService.create(req.body);
   const profileResult = await profileService.updateProfilePicture(req.user.user_id, imageResult.id);
-
   res.json({
     id: profileResult.picture
   });
 }
-

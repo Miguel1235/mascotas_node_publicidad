@@ -53,7 +53,9 @@ export function init(appConfig: Config): express.Express {
   app.use(
     express.static(path.join(__dirname, "../public"), { maxAge: 31557600000 })
   );
-  app.get("/", (req, res, next) => { res.redirect("index.html"); });
+  app.get("/", (req, res, next) => {
+    res.redirect("index.html");
+  });
 
   // Iniciamos passport
   token.init();

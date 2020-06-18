@@ -13,7 +13,7 @@ export function initModule(app: express.Express) {
   // Rutas del controlador
   app
     .route("/v1/image")
-    .post(onlyLoggedIn, create);
+    .post(onlyLoggedIn,create);
 
   app
     .route("/v1/image/:imageId")

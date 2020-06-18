@@ -25,6 +25,12 @@ Microservicio de Autentificación
 	- [Eliminar Provincia](#eliminar-provincia)
 	- [Listar Provincias](#listar-provincias)
 	
+- [Publicidad](#publicidad)
+	- [Buscar publicidades](#buscar-publicidades)
+	- [Buscar una publicidad](#buscar-una-publicidad)
+	- [Crear una publicidad](#crear-una-publicidad)
+	- [Eliminar publicidad](#eliminar-publicidad)
+	
 - [Seguridad](#seguridad)
 	- [Cambiar Password](#cambiar-password)
 	- [Deshabilitar Usuario](#deshabilitar-usuario)
@@ -858,6 +864,254 @@ Provincia
 
 ### Error Response
 
+400 Bad Request
+
+```
+HTTP/1.1 400 Bad Request
+{
+   "messages" : [
+     {
+       "path" : "{Nombre de la propiedad}",
+       "message" : "{Motivo del error}"
+     },
+     ...
+  ]
+}
+```
+500 Server Error
+
+```
+HTTP/1.1 500 Internal Server Error
+{
+   "error" : "Not Found"
+}
+```
+# <a name='publicidad'></a> Publicidad
+
+## <a name='buscar-publicidades'></a> Buscar publicidades
+[Back to top](#top)
+
+<p>Busca todas las publicidades que esten habilitadas</p>
+
+	GET /v1/ads
+
+
+
+### Examples
+
+Body
+
+```
+{
+  "image": "Id de imagen",
+  "url": "url de la imagen"
+}
+```
+Header Autorización
+
+```
+Authorization=bearer {token}
+```
+
+
+### Success Response
+
+Body
+
+```
+[
+{
+  "image": "886a8280-b0cc-11ea-8ae7-b169694c2352",
+  "url": facebook.com
+},
+{
+  "image": "886a8280-b0cc-11ea-8ae7-b169694c2353",
+  "url": instagram.com
+},
+]
+```
+
+
+### Error Response
+
+401 Unauthorized
+
+```
+HTTP/1.1 401 Unauthorized
+```
+400 Bad Request
+
+```
+HTTP/1.1 400 Bad Request
+{
+   "messages" : [
+     {
+       "path" : "{Nombre de la propiedad}",
+       "message" : "{Motivo del error}"
+     },
+     ...
+  ]
+}
+```
+500 Server Error
+
+```
+HTTP/1.1 500 Internal Server Error
+{
+   "error" : "Not Found"
+}
+```
+## <a name='buscar-una-publicidad'></a> Buscar una publicidad
+[Back to top](#top)
+
+<p>Busca una publicidad</p>
+
+	GET /v1/ads/:adId
+
+
+
+### Examples
+
+Header Autorización
+
+```
+Authorization=bearer {token}
+```
+
+
+### Success Response
+
+Provincia
+
+```
+{
+  "id": "id de la publicidad",
+  "url": "url link a publicidad",
+  "image": "token de la imagen guardada en redis",
+}
+```
+
+
+### Error Response
+
+401 Unauthorized
+
+```
+HTTP/1.1 401 Unauthorized
+```
+400 Bad Request
+
+```
+HTTP/1.1 400 Bad Request
+{
+   "messages" : [
+     {
+       "path" : "{Nombre de la propiedad}",
+       "message" : "{Motivo del error}"
+     },
+     ...
+  ]
+}
+```
+500 Server Error
+
+```
+HTTP/1.1 500 Internal Server Error
+{
+   "error" : "Not Found"
+}
+```
+## <a name='crear-una-publicidad'></a> Crear una publicidad
+[Back to top](#top)
+
+<p>Registra una publicidad en el sistema</p>
+
+	POST /v1/ads
+
+
+
+### Examples
+
+Body
+
+```
+{
+  "image": "{string de la imagen}",
+  "url": "{url de la publicidad}",
+}
+```
+
+
+### Success Response
+
+Respuesta
+
+```
+HTTP/1.1 200 OK
+{
+  "token": "{Token de autorización}"
+}
+```
+
+
+### Error Response
+
+400 Bad Request
+
+```
+HTTP/1.1 400 Bad Request
+{
+   "messages" : [
+     {
+       "path" : "{Nombre de la propiedad}",
+       "message" : "{Motivo del error}"
+     },
+     ...
+  ]
+}
+```
+500 Server Error
+
+```
+HTTP/1.1 500 Internal Server Error
+{
+   "error" : "Not Found"
+}
+```
+## <a name='eliminar-publicidad'></a> Eliminar publicidad
+[Back to top](#top)
+
+<p>Elimina una publicidad para que no se muestre mas en el frontEnd.</p>
+
+	DELETE /v1/ads/:adId
+
+
+
+### Examples
+
+Header Autorización
+
+```
+Authorization=bearer {token}
+```
+
+
+### Success Response
+
+Response
+
+```
+HTTP/1.1 200 OK
+```
+
+
+### Error Response
+
+401 Unauthorized
+
+```
+HTTP/1.1 401 Unauthorized
+```
 400 Bad Request
 
 ```

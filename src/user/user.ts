@@ -120,4 +120,4 @@ UserSchema.methods.setStringPassword = function (password: string) {
   this.updated = Date.now();
 };
 
-export let User = model<IUser>("User", UserSchema);
+export const User = model<IUser>("User", UserSchema);

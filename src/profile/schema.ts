@@ -18,7 +18,7 @@ export interface IProfile extends mongoose.Document {
 /**
  * Esquema del Perfil
  */
-export let ProfileSchema = new mongoose.Schema({
+export const ProfileSchema = new mongoose.Schema({
   name: {
     type: String,
     default: "",
@@ -80,4 +80,4 @@ ProfileSchema.pre("save", function (this: IProfile, next) {
   next();
 });
 
-export let Profile = mongoose.model<IProfile>("Profile", ProfileSchema);
+export const Profile = mongoose.model<IProfile>("Profile", ProfileSchema);
