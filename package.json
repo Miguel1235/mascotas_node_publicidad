@@ -20,7 +20,7 @@
     },
     "dependencies": {
         "apidoc-markdown2": "^0.3.7",
-        "body-parser": "1.19.0",
+        "body-parser": "1.20.3",
         "compression": "1.7.4",
         "connect-mongo": "3.2.0",
         "cors": "2.8.5",
